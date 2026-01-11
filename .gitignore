@@ -21,6 +21,9 @@ python/*.pyo
 python/*.pyd
 python/heatmap*.png
 
+# Output directory
+output/
+
 # Node.js (node/ directory)
 node/node_modules/
 node/npm-debug.log*

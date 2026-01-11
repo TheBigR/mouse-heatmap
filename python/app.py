@@ -72,9 +72,15 @@ async def generate_heatmap_now(websocket=None):
     try:
         # Generate timestamp for filename
         timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        # Save in the same directory as the script
+        # Save in the output folder (project root)
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        filename = os.path.join(script_dir, f'heatmap_{timestamp}.png')
+        project_root = os.path.dirname(script_dir)  # Go up one level from python/ to project root
+        output_dir = os.path.join(project_root, 'output')
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(output_dir, exist_ok=True)
+        
+        filename = os.path.join(output_dir, f'heatmap_{timestamp}.png')
         
         print(f'💾 Saving heatmap to: {filename}')
         
